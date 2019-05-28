@@ -1,0 +1,16 @@
+{
+  "addons": [
+
+  ],
+  "buildpacks": [
+
+  ],
+  "env": {
+  },
+  "formation": {
+  },
+  "name": "MoviesCli",
+  "scripts": {
+  },
+  "stack": "heroku-18"
+}
