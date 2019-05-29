@@ -14,10 +14,14 @@
  */
 namespace App\Controller;
 
+use App\Controller\Component;
 use Cake\Core\Configure;
-use Cake\Http\Exception\ForbiddenException;
-use Cake\Http\Exception\NotFoundException;
-use Cake\View\Exception\MissingTemplateException;
+use Cake\Datasource\ConnectionManager;
+use Cake\ORM\TableRegistry;
+use Cake\Core\Exception\Exception;
+use Cake\Datasource\Exception\RecordNotFoundException;
+use DateTime;
+use DateInterval;
 
 /**
  * Static content controller
@@ -28,6 +32,15 @@ use Cake\View\Exception\MissingTemplateException;
  */
 class PagesController extends AppController
 {
+
+    /**
+     * Do Cake
+     */
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadComponent('Movies');
+    }
 
     /**
      * Displays a view
@@ -58,6 +71,11 @@ class PagesController extends AppController
         $this->set(compact('page', 'subpage'));
 
         try {
+            switch($page) {
+                case 'index':
+                    $this->getData();
+                break;
+            }
             $this->render(implode('/', $path));
         } catch (MissingTemplateException $exception) {
             if (Configure::read('debug')) {
@@ -65,5 +83,15 @@ class PagesController extends AppController
             }
             throw new NotFoundException();
         }
+    }
+
+    public function getData(){
+        $return = $this->Movies->Popular();
+        $movies = $return['data']['results'];
+        $total_results = $return['data']['total_results'];
+        $total_pages = $return['data']['total_pages'];
+        $index_page = $return['data']['page'];
+        
+        $this->set(compact('movies', 'total_results', 'total_pages', 'index_page'));
     }
 }

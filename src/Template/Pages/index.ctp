@@ -20,6 +20,68 @@ use Cake\Error\Debugger;
 use Cake\Http\Exception\NotFoundException;
 
 ?>
+<?php echo '<pre>'; print_r($movies); echo '</pre>'; ?>
+<div class="section section-basic">
+    <div class="container">
+        <div id="nav-tabs">
+            <h3>Popular</h3>
+            <div class="row">
+            <?php foreach($movies as $movie): ?>
+                    <div class="col-md-6 mr-auto ml-auto">
+                        <?php if(!empty($movie['backdrop_path'])): ?>
+                            <!-- Carousel Card -->
+                            <div class="card card-raised card-carousel">
+                                <div id="carouselIndicators-<?=$movie['id']?>" class="carousel slide" data-ride="carousel" data-interval="3000">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselIndicators-<?=$movie['id']?>" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselIndicators-<?=$movie['id']?>" data-slide-to="1"></li>
+                                </ol>
+                                <div class="carousel-inner">
+
+                                    <div class="carousel-item active">
+                                    <img class="d-block w-100" src="<?=$movie['backdrop_path']?>" alt="BackDrop Path">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h3>
+                                            <b><?= $movie['original_title'] ?></b>
+                                        </h3>
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="carousel-item overview">
+                                    <img class="d-block w-100" src="<?=$movie['backdrop_path']?>" alt="Sinopse">
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h4>
+                                            <?= $movie['overview'] ?>
+                                        </h4>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselIndicators-<?=$movie['id']?>" role="button" data-slide="prev">
+                                    <i class="material-icons">keyboard_arrow_left</i>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselIndicators-<?=$movie['id']?>" role="button" data-slide="next">
+                                    <i class="material-icons">keyboard_arrow_right</i>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                                </div>
+                            </div>
+                        <!-- End Carousel Card -->
+                        <?php endif; ?>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <?php foreach($movie['genres'] as $genre) : ?>
+                                    <span class="badge badge-pill badge-primary"><?=$genre?></span>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="section section-basic">
     <div class="container">
     <div class="title">
@@ -456,7 +518,7 @@ use Cake\Http\Exception\NotFoundException;
     </div>
     <!--             navbar -->
     <div id="navbar">
-    <div class="navigation-example" style="background-image: url('./assets/img//bg.jpg');">
+    <div class="navigation-example" style="background-image: url('img/bg.jpg');">
         <!--        rose navbar with search form -->
         <nav class="navbar navbar-expand-lg bg-rose">
         <div class="container">
@@ -592,7 +654,7 @@ use Cake\Http\Exception\NotFoundException;
                 <li class="dropdown nav-item">
                 <a href="#pablo" class="profile-photo dropdown-toggle nav-link" data-toggle="dropdown">
                     <div class="profile-photo-small">
-                    <img src="./assets/img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid">
+                    <img src="img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid">
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -687,98 +749,98 @@ use Cake\Http\Exception\NotFoundException;
 </div>
 <div class="section section-tabs">
     <div class="container">
-    <!--                nav tabs	             -->
-    <div id="nav-tabs">
-        <h3>Navigation Tabs</h3>
-        <div class="row">
-        <div class="col-md-6">
-            <h3>
-            <small>Tabs with Icons on Card</small>
-            </h3>
-            <!-- Tabs with icons on Card -->
-            <div class="card card-nav-tabs">
-            <div class="card-header card-header-primary">
-                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                    <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#profile" data-toggle="tab">
-                        <i class="material-icons">face</i> Profile
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#messages" data-toggle="tab">
-                        <i class="material-icons">chat</i> Messages
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#settings" data-toggle="tab">
-                        <i class="material-icons">build</i> Settings
-                        </a>
-                    </li>
-                    </ul>
+        <!--                nav tabs	             -->
+        <div id="nav-tabs">
+            <h3>Navigation Tabs</h3>
+            <div class="row">
+            <div class="col-md-6">
+                <h3>
+                <small>Tabs with Icons on Card</small>
+                </h3>
+                <!-- Tabs with icons on Card -->
+                <div class="card card-nav-tabs">
+                <div class="card-header card-header-primary">
+                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                    <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#profile" data-toggle="tab">
+                            <i class="material-icons">face</i> Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#messages" data-toggle="tab">
+                            <i class="material-icons">chat</i> Messages
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#settings" data-toggle="tab">
+                            <i class="material-icons">build</i> Settings
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                <div class="card-body ">
+                    <div class="tab-content text-center">
+                    <div class="tab-pane active" id="profile">
+                        <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <p>I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it&#x2019;s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                    </div>
+                    </div>
                 </div>
                 </div>
+                <!-- End Tabs with icons on Card -->
             </div>
-            <div class="card-body ">
-                <div class="tab-content text-center">
-                <div class="tab-pane active" id="profile">
-                    <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+            <div class="col-md-6">
+                <h3>
+                <small>Tabs on Plain Card</small>
+                </h3>
+                <!-- Tabs on Plain Card -->
+                <div class="card card-nav-tabs card-plain">
+                <div class="card-header card-header-danger">
+                    <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+                    <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ul class="nav nav-tabs" data-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home" data-toggle="tab">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#updates" data-toggle="tab">Updates</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#history" data-toggle="tab">History</a>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
                 </div>
-                <div class="tab-pane" id="messages">
-                    <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                <div class="card-body ">
+                    <div class="tab-content text-center">
+                    <div class="tab-pane active" id="home">
+                        <p>I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it&#x2019;s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
+                    </div>
+                    <div class="tab-pane" id="updates">
+                        <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
+                    </div>
+                    <div class="tab-pane" id="history">
+                        <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
+                    </div>
+                    </div>
                 </div>
-                <div class="tab-pane" id="settings">
-                    <p>I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it&#x2019;s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
                 </div>
-                </div>
+                <!-- End Tabs on plain Card -->
             </div>
             </div>
-            <!-- End Tabs with icons on Card -->
         </div>
-        <div class="col-md-6">
-            <h3>
-            <small>Tabs on Plain Card</small>
-            </h3>
-            <!-- Tabs on Plain Card -->
-            <div class="card card-nav-tabs card-plain">
-            <div class="card-header card-header-danger">
-                <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
-                <div class="nav-tabs-navigation">
-                <div class="nav-tabs-wrapper">
-                    <ul class="nav nav-tabs" data-tabs="tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#home" data-toggle="tab">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#updates" data-toggle="tab">Updates</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#history" data-toggle="tab">History</a>
-                    </li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            <div class="card-body ">
-                <div class="tab-content text-center">
-                <div class="tab-pane active" id="home">
-                    <p>I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. So when you get something that has the name Kanye West on it, it&#x2019;s supposed to be pushing the furthest possibilities. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus.</p>
-                </div>
-                <div class="tab-pane" id="updates">
-                    <p> I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. </p>
-                </div>
-                <div class="tab-pane" id="history">
-                    <p> I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at. I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that&#x2019;s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-                </div>
-                </div>
-            </div>
-            </div>
-            <!-- End Tabs on plain Card -->
-        </div>
-        </div>
-    </div>
     </div>
 </div>
 <!-- 	            end nav tabs -->
@@ -1045,19 +1107,19 @@ use Cake\Http\Exception\NotFoundException;
         <div class="row">
         <div class="col-sm-2">
             <h4>Rounded Image</h4>
-            <img src="./assets/img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid">
+            <img src="img/faces/avatar.jpg" alt="Rounded Image" class="rounded img-fluid">
         </div>
         <div class="col-sm-2 ml-auto">
             <h4>Circle Image</h4>
-            <img src="./assets/img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid">
+            <img src="img/faces/avatar.jpg" alt="Circle Image" class="rounded-circle img-fluid">
         </div>
         <div class="col-sm-2 ml-auto">
             <h4>Rounded Raised</h4>
-            <img src="./assets/img/faces/avatar.jpg" alt="Raised Image" class="img-raised rounded img-fluid">
+            <img src="img/faces/avatar.jpg" alt="Raised Image" class="img-raised rounded img-fluid">
         </div>
         <div class="col-sm-2 ml-auto">
             <h4>Circle Raised</h4>
-            <img src="./assets/img/faces/avatar.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
+            <img src="img/faces/avatar.jpg" alt="Thumbnail Image" class="img-raised rounded-circle img-fluid">
         </div>
         </div>
         <div class="row">
@@ -1139,7 +1201,7 @@ use Cake\Http\Exception\NotFoundException;
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="./assets/img/bg2.jpg" alt="First slide">
+                <img class="d-block w-100" src="img/bg2.jpg" alt="First slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
                     <i class="material-icons">location_on</i> Yellowstone National Park, United States
@@ -1147,7 +1209,7 @@ use Cake\Http\Exception\NotFoundException;
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="./assets/img/bg3.jpg" alt="Second slide">
+                <img class="d-block w-100" src="img/bg3.jpg" alt="Second slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
                     <i class="material-icons">location_on</i> Somewhere Beyond, United States
@@ -1155,7 +1217,7 @@ use Cake\Http\Exception\NotFoundException;
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="./assets/img/bg.jpg" alt="Third slide">
+                <img class="d-block w-100" src="img/bg.jpg" alt="Third slide">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
                     <i class="material-icons">location_on</i> Yellowstone National Park, United States
@@ -1189,7 +1251,7 @@ use Cake\Http\Exception\NotFoundException;
     </div>
     </div>
 </div>
-<div class="section section-signup page-header" style="background-image: url('./assets/img/city.jpg');">
+<div class="section section-signup page-header" style="background-image: url('img/city.jpg');">
     <div class="container">
     <div class="row">
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
@@ -1253,13 +1315,13 @@ use Cake\Http\Exception\NotFoundException;
     <div class="row">
         <div class="col-md-6">
         <a href="examples/landing-page.html" target="_blank">
-            <img src="./assets/img/landing.jpg" alt="Rounded Image" class="img-raised rounded img-fluid">
+            <img src="img/landing.jpg" alt="Rounded Image" class="img-raised rounded img-fluid">
             <button class="btn  btn-link btn-primary btn-lg">View Landing Page</button>
         </a>
         </div>
         <div class="col-md-6">
         <a href="examples/profile-page.html" target="_blank">
-            <img src="./assets/img/profile.jpg" alt="Rounded Image" class="img-raised rounded img-fluid">
+            <img src="img/profile.jpg" alt="Rounded Image" class="img-raised rounded img-fluid">
             <button class="btn btn-link btn-primary btn-lg">View Profile Page</button>
         </a>
         </div>

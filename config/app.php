@@ -11,6 +11,30 @@ return [
      */
     'debug' => false,
 
+    'service_mode' => 'dev',
+
+     /**
+     * Api configure
+     */
+    'Api' => [
+        'dev' => [
+            'url' => 'http://moviesapi.arianyferreira.work/',
+            'user' => 'teste@teste.com.br',
+            'pass' => 'Mudar123'
+        ],
+        'homolog' => [
+            'url' => 'http://moviesapi.arianyferreira.work/',
+            'user' => 'teste@teste.com.br',
+            'pass' => 'Mudar123'
+        ],
+        'producao' => [
+            'url' => 'http://moviesapi.arianyferreira.work/',
+            'user' => 'teste@teste.com.br',
+            'pass' => 'Mudar123'
+        ]
+    ],
+
+
     /**
      * Configure basic information about the application.
      *
